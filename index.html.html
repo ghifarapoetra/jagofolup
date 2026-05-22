@@ -1,402 +1,511 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JagoFolup - CRM Ringan Marketer Hubungan</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #F8FAFC;
-        }
-        .active-nav {
-            background-color: #0D9488; /* Teal-600 */
-            color: white !important;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JagoFolup Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    /* Style khusus untuk menandai menu aktif */
+    .nav-active {
+      background-color: #f0fdfa !important;
+      color: #0d9488 !important;
+      font-weight: 600;
+    }
+    .nav-mobile-active {
+      color: #0d9488 !important;
+      font-weight: 600;
+    }
+  </style>
 </head>
-<body class="text-slate-800">
 
-    <div class="flex flex-col md:flex-row min-h-screen">
+<body class="bg-slate-50 text-slate-900 antialiased selection:bg-teal-500 selection:text-white">
 
-        <aside class="w-full md:w-64 bg-white border-b md:border-b-0 md:border-r border-slate-200 p-5 flex flex-col justify-between shrink-0">
-            <div>
-                <div class="flex items-center gap-3 mb-8">
-                    <div class="bg-teal-600 text-white p-2.5 rounded-xl flex items-center justify-center shadow-md shadow-teal-100">
-                        <i class="fa-solid fa-paper-plane text-xl"></i>
-                    </div>
-                    <div>
-                        <h1 class="font-bold text-lg tracking-tight">JagoFolup</h1>
-                        <span class="text-xs text-teal-600 font-medium bg-teal-50 px-2 py-0.5 rounded-md">MVP Prototype</span>
-                    </div>
-                </div>
+<div class="min-h-screen flex flex-col md:flex-row">
 
-                <nav class="space-y-1.5">
-                    <button onclick="switchPage('dashboard')" id="nav-dashboard" class="w-full flex items-center gap-3.5 px-4 py-3 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 transition-all active-nav">
-                        <i class="fa-solid fa-chart-pie text-base w-5 text-center"></i> Dashboard
-                    </button>
-                    <button onclick="switchPage('projects')" id="nav-projects" class="w-full flex items-center gap-3.5 px-4 py-3 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 transition-all">
-                        <i class="fa-solid fa-folder text-base w-5 text-center"></i> Projects B2B
-                    </button>
-                    <button onclick="switchPage('leads')" id="nav-leads" class="w-full flex items-center gap-3.5 px-4 py-3 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 transition-all">
-                        <i class="fa-solid fa-user-group text-base w-5 text-center"></i> Leads Pesantren
-                    </button>
-                    <button onclick="switchPage('tasks')" id="nav-tasks" class="w-full flex items-center gap-3.5 px-4 py-3 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 transition-all">
-                        <i class="fa-solid fa-list-check text-base w-5 text-center"></i> Tugas Hari Ini
-                    </button>
-                    <button onclick="switchPage('templates')" id="nav-templates" class="w-full flex items-center gap-3.5 px-4 py-3 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 transition-all">
-                        <i class="fa-solid fa-message text-base w-5 text-center"></i> Template WA
-                    </button>
-                </nav>
-            </div>
+  <aside class="hidden md:flex w-72 bg-white border-r border-slate-200 min-h-screen flex-col p-6 sticky top-0 h-screen justify-between z-20">
+    <div>
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-teal-600 rounded-2xl flex items-center justify-center text-white text-xl shadow-md shadow-teal-600/20">
+          <i class="fa-solid fa-paper-plane"></i>
+        </div>
+        <div>
+          <h1 class="text-2xl font-extrabold text-teal-600 tracking-tight">JagoFolup</h1>
+          <p class="text-[11px] font-medium text-slate-400 uppercase tracking-wider">Relationship CRM</p>
+        </div>
+      </div>
+      <p class="text-xs text-slate-500 mt-3 border-b border-slate-100 pb-4">
+        CRM ringan buat marketer relationship-based.
+      </p>
 
-            <div class="mt-8 pt-4 border-t border-slate-100 hidden md:flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-teal-100 text-teal-700 flex items-center justify-center font-bold text-sm">
-                    RG
-                </div>
-                <div>
-                    <h4 class="font-semibold text-sm">Rifamumza G.</h4>
-                    <p class="text-xs text-slate-400">B2B Educational Marketer</p>
-                </div>
-            </div>
-        </aside>
+      <nav class="mt-6 space-y-1">
+        <button onclick="switchPage('dashboard')" id="aside-dashboard" class="w-full text-left px-4 py-3 rounded-2xl hover:bg-slate-50 text-slate-600 flex items-center gap-3 transition-all nav-active">
+          <i class="fa-solid fa-chart-pie w-5 text-center text-base"></i> Dashboard
+        </button>
 
-        <main class="flex-1 p-4 md:p-8 overflow-y-auto">
+        <button onclick="switchPage('projects')" id="aside-projects" class="w-full text-left px-4 py-3 rounded-2xl hover:bg-slate-50 text-slate-600 flex items-center gap-3 transition-all">
+          <i class="fa-solid fa-folder w-5 text-center text-base"></i> Projects B2B
+        </button>
 
-            <section id="page-dashboard" class="space-y-6">
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                    <div>
-                        <h2 class="text-2xl font-bold tracking-tight">Assalamu'alaikum, Mas Rifamumza 👋</h2>
-                        <p class="text-sm text-slate-500 mt-1">Hari ini adalah waktu yang tepat untuk menyapa jaringan pesantren Mas.</p>
-                    </div>
-                    <div class="bg-amber-50 border border-amber-200 text-amber-800 px-4 py-2.5 rounded-xl text-xs font-medium flex items-center gap-2">
-                        <i class="fa-solid fa-circle-exclamation text-amber-600"></i> Target Akhir Mei: Tinggal beberapa hari lagi! Fokus *closing*.
-                    </div>
-                </div>
+        <button onclick="switchPage('leads')" id="aside-leads" class="w-full text-left px-4 py-3 rounded-2xl hover:bg-slate-50 text-slate-600 flex items-center gap-3 transition-all">
+          <i class="fa-solid fa-user-group w-5 text-center text-base"></i> Leads Pesantren
+        </button>
 
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
-                        <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Total Mitra</span>
-                        <h3 class="text-2xl font-bold text-slate-800 mt-1">56</h3>
-                        <p class="text-xs text-teal-600 font-medium mt-1"><i class="fa-solid fa-school"></i> Database Sekolah</p>
-                    </div>
-                    <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
-                        <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Leads Hot 🔥</span>
-                        <h3 class="text-2xl font-bold text-amber-600 mt-1">12</h3>
-                        <p class="text-xs text-slate-500 mt-1">Butuh follow up segera</p>
-                    </div>
-                    <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
-                        <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Target Closing</span>
-                        <h3 class="text-2xl font-bold text-teal-700 mt-1">Rp 10 M</h3>
-                        <p class="text-xs text-slate-500 mt-1">Halal Travel / KDJ</p>
-                    </div>
-                    <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
-                        <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Follow Up Hari Ini</span>
-                        <h3 class="text-2xl font-bold text-slate-800 mt-1">8</h3>
-                        <p class="text-xs text-emerald-600 font-medium mt-1"><i class="fa-solid fa-circle-check"></i> Siap disapa via WA</p>
-                    </div>
-                </div>
+        <button onclick="switchPage('tasks')" id="aside-tasks" class="w-full text-left px-4 py-3 rounded-2xl hover:bg-slate-50 text-slate-600 flex items-center gap-3 transition-all">
+          <i class="fa-solid fa-list-check w-5 text-center text-base"></i> Tugas Hari Ini
+        </button>
 
-                <div class="bg-gradient-to-r from-teal-800 to-teal-900 text-white p-6 rounded-2xl shadow-xl shadow-teal-900/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                    <div>
-                        <span class="bg-teal-700/60 text-teal-100 text-[10px] uppercase font-bold tracking-widest px-2.5 py-1 rounded-full">Strategi Kilat</span>
-                        <h3 class="text-lg font-bold mt-2">Kirim Penawaran Rihlah & Edukasi ke Pembuat Keputusan</h3>
-                        <p class="text-sm text-teal-100/80 mt-1 max-w-xl">Gunakan kredibilitas alumni LIPIA dan posisi kehumasan Mas untuk membuka jalur kolaborasi institusi.</p>
-                    </div>
-                    <button onclick="switchPage('leads')" class="bg-white text-teal-900 hover:bg-teal-50 px-5 py-3 rounded-xl text-sm font-bold shadow-md transition-all shrink-0 w-full md:w-auto">
-                        Mulai Follow Up Sekarang <i class="fa-solid fa-arrow-right ml-1"></i>
-                    </button>
-                </div>
-            </section>
-
-            <section id="page-projects" class="hidden space-y-6">
-                <div>
-                    <h2 class="text-2xl font-bold tracking-tight">Kategori Project & Komisi</h2>
-                    <p class="text-sm text-slate-500 mt-1">3 Produk aktif yang bisa Mas tawarkan untuk mengejar target akhir bulan.</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col justify-between">
-                        <div>
-                            <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl font-bold mb-4">
-                                <i class="fa-solid fa-plane-departure"></i>
-                            </div>
-                            <h3 class="font-bold text-lg text-slate-800">Halal Travel (B2B)</h3>
-                            <p class="text-sm text-slate-500 mt-2">Target: Kunjungan kerja pengurus, rihlah ilmiah pengajar, atau study tour santri pesantren.</p>
-                            <div class="mt-4 bg-emerald-50 text-emerald-800 text-xs font-semibold px-3 py-1.5 rounded-lg inline-block">
-                                Estimasi Fee: Rp 500rb - Rp 1jt / Orang
-                            </div>
-                        </div>
-                        <button onclick="switchPage('leads')" class="mt-6 w-full py-2.5 text-center border border-slate-200 text-slate-700 font-medium text-sm rounded-xl hover:bg-slate-50 transition-all">
-                            Lihat Target Sekolah
-                        </button>
-                    </div>
-
-                    <div class="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col justify-between">
-                        <div>
-                            <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl font-bold mb-4">
-                                <i class="fa-solid fa-graduation-cap"></i>
-                            </div>
-                            <h3 class="font-bold text-lg text-slate-800">Kuliah Di Jordan (KDJ)</h3>
-                            <p class="text-sm text-slate-500 mt-2">Target: Santri kelas 12 Akhir atau alumni pondok pesantren yang berminat melanjutkan studi ke Yordania.</p>
-                            <div class="mt-4 bg-indigo-50 text-indigo-800 text-xs font-semibold px-3 py-1.5 rounded-lg inline-block">
-                                Estimasi Fee: Rp 500rb / Anak (DP Closing: Rp 200rb)
-                            </div>
-                        </div>
-                        <button onclick="switchPage('leads')" class="mt-6 w-full py-2.5 text-center border border-slate-200 text-slate-700 font-medium text-sm rounded-xl hover:bg-slate-50 transition-all">
-                            Cari Calon Mahasiswa
-                        </button>
-                    </div>
-
-                    <div class="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col justify-between">
-                        <div>
-                            <div class="w-12 h-12 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center text-xl font-bold mb-4">
-                                <i class="fa-solid fa-language"></i>
-                            </div>
-                            <h3 class="font-bold text-lg text-slate-800">Penerjemah Berkas Kilat</h3>
-                            <p class="text-sm text-slate-500 mt-2">Target: Penerjemahan dokumen persyaratan beasiswa atau kelengkapan studi luar negeri secara kilat.</p>
-                            <div class="mt-4 bg-teal-50 text-teal-800 text-xs font-semibold px-3 py-1.5 rounded-lg inline-block">
-                                Estimasi Margin: Rp 100rb - Rp 150rb / Halaman
-                            </div>
-                        </div>
-                        <button onclick="switchPage('leads')" class="mt-6 w-full py-2.5 text-center border border-slate-200 text-slate-700 font-medium text-sm rounded-xl hover:bg-slate-50 transition-all">
-                            Broadcast ke Kontak WA
-                        </button>
-                    </div>
-                </div>
-            </section>
-
-            <section id="page-leads" class="hidden space-y-6">
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                    <div>
-                        <h2 class="text-2xl font-bold tracking-tight">Database & Kontak Prioritas</h2>
-                        <p class="text-sm text-slate-500 mt-1">Saringan 6 data sekolah prioritas teratas dari database (Waseelaa, Albani, Jamal, Ifam).</p>
-                    </div>
-                    <span class="text-xs font-medium text-slate-400 bg-white border border-slate-200 px-3 py-1.5 rounded-xl self-start md:self-auto">
-                        <i class="fa-solid fa-filter"></i> Terkurasi: Pembuat Keputusan (Decision Maker)
-                    </span>
-                </div>
-
-                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left border-collapse">
-                            <thead>
-                                <tr class="bg-slate-50/75 border-b border-slate-200 text-xs font-bold uppercase tracking-wider text-slate-400">
-                                    <th class="px-6 py-4">Nama Lembaga & PIC</th>
-                                    <th class="px-6 py-4">Tipe Prospek</th>
-                                    <th class="px-6 py-4">Kategori Project</th>
-                                    <th class="px-6 py-4">Status Hubungan</th>
-                                    <th class="px-6 py-4 text-center">Aksi Cepat</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-slate-100 text-sm">
-                                <tr>
-                                    <td class="px-6 py-4">
-                                        <div class="font-bold text-slate-800">Ponpes Al-Ihsyad Cabang Baru</div>
-                                        <div class="text-xs text-slate-400">Ustadz Ahmad (Mudir) • 08123456789</div>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <span class="bg-red-50 text-red-700 text-xs font-semibold px-2.5 py-1 rounded-md">HOT 🔥 (Besar)</span>
-                                    </td>
-                                    <td class="px-6 py-4 text-slate-600 font-medium">Halal Travel / Study Tour</td>
-                                    <td class="px-6 py-4">
-                                        <div class="text-xs text-slate-500">Belum di-follow up pekan ini</div>
-                                    </td>
-                                    <td class="px-6 py-4 text-center">
-                                        <button onclick="sendWA('Ustadz Ahmad', 'travel')" class="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-xs px-3 py-2 rounded-xl inline-flex items-center gap-1.5 shadow-sm shadow-emerald-100 transition-all">
-                                            <i class="fa-brands fa-whatsapp text-sm"></i> Sapa WA
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-6 py-4">
-                                        <div class="font-bold text-slate-800">MA Swasta Al-Manshoor</div>
-                                        <div class="text-xs text-slate-400">Ustadzah Fatimah (Kesiswaan) • 0876543210</div>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <span class="bg-amber-50 text-amber-700 text-xs font-semibold px-2.5 py-1 rounded-md">WARM ☀️</span>
-                                    </td>
-                                    <td class="px-6 py-4 text-slate-600 font-medium">Kuliah Di Jordan (KDJ)</td>
-                                    <td class="px-6 py-4">
-                                        <div class="text-xs text-slate-500">Menunggu info jadwal sosialisasi</div>
-                                    </td>
-                                    <td class="px-6 py-4 text-center">
-                                        <button onclick="sendWA('Ustadzah Fatimah', 'jordan')" class="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-xs px-3 py-2 rounded-xl inline-flex items-center gap-1.5 shadow-sm shadow-emerald-100 transition-all">
-                                            <i class="fa-brands fa-whatsapp text-sm"></i> Sapa WA
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-6 py-4">
-                                        <div class="font-bold text-slate-800">Pesantren Tinggi Minhaj Sunnah</div>
-                                        <div class="text-xs text-slate-400">Ustadz Ridwan (Sekretaris) • 0898765432</div>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <span class="bg-red-50 text-red-700 text-xs font-semibold px-2.5 py-1 rounded-md">HOT 🔥</span>
-                                    </td>
-                                    <td class="px-6 py-4 text-slate-600 font-medium">Terjemah Berkas Institusi</td>
-                                    <td class="px-6 py-4">
-                                        <div class="text-xs text-slate-500">Berkas pendaftaran mudir baru</div>
-                                    </td>
-                                    <td class="px-6 py-4 text-center">
-                                        <button onclick="sendWA('Ustadz Ridwan', 'terjemah')" class="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-xs px-3 py-2 rounded-xl inline-flex items-center gap-1.5 shadow-sm shadow-emerald-100 transition-all">
-                                            <i class="fa-brands fa-whatsapp text-sm"></i> Sapa WA
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-6 py-4">
-                                        <div class="font-bold text-slate-800">SMAIT Bina Amal Global</div>
-                                        <div class="text-xs text-slate-400">Ustadz Zainal (Humas) • 085211223344</div>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <span class="bg-amber-50 text-amber-700 text-xs font-semibold px-2.5 py-1 rounded-md">WARM ☀️</span>
-                                    </td>
-                                    <td class="px-6 py-4 text-slate-600 font-medium">Halal Travel / Rihlah Kerja</td>
-                                    <td class="px-6 py-4">
-                                        <div class="text-xs text-slate-500">Pernah tertarik brosur awal</div>
-                                    </td>
-                                    <td class="px-6 py-4 text-center">
-                                        <button onclick="sendWA('Ustadz Zainal', 'travel')" class="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-xs px-3 py-2 rounded-xl inline-flex items-center gap-1.5 shadow-sm shadow-emerald-100 transition-all">
-                                            <i class="fa-brands fa-whatsapp text-sm"></i> Sapa WA
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-6 py-4">
-                                        <div class="font-bold text-slate-800">Alumni Al-Irsyad (Mandiri)</div>
-                                        <div class="text-xs text-slate-400">Akhi Fahmi (Alumni 2025) • 081399887766</div>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <span class="bg-red-50 text-red-700 text-xs font-semibold px-2.5 py-1 rounded-md">HOT 🔥</span>
-                                    </td>
-                                    <td class="px-6 py-4 text-slate-600 font-medium">Kuliah Di Jordan (KDJ)</td>
-                                    <td class="px-6 py-4">
-                                        <div class="text-xs text-slate-500">Tanya berkas paspor & rekomendasi</div>
-                                    </td>
-                                    <td class="px-6 py-4 text-center">
-                                        <button onclick="sendWA('Akhi Fahmi', 'jordan')" class="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-xs px-3 py-2 rounded-xl inline-flex items-center gap-1.5 shadow-sm shadow-emerald-100 transition-all">
-                                            <i class="fa-brands fa-whatsapp text-sm"></i> Sapa WA
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </section>
-
-            <section id="page-tasks" class="hidden space-y-6">
-                <div>
-                    <h2 class="text-2xl font-bold tracking-tight">Rencana Aksi & Fokus Harian</h2>
-                    <p class="text-sm text-slate-500 mt-1">Jangan biarkan pikiran Mas terbebani berat. Selesaikan 3 tugas ini saja hari ini.</p>
-                </div>
-
-                <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
-                    <div class="flex items-start gap-4 p-3 hover:bg-slate-50 rounded-xl transition-all">
-                        <input type="checkbox" class="mt-1 w-5 h-5 rounded text-teal-600 focus:ring-teal-500 border-slate-300">
-                        <div class="flex-1">
-                            <h4 class="font-semibold text-slate-800 text-sm">Gaji pesantren cair (Alokasikan Rp 2,2 Juta untuk pos cicilan utang)</h4>
-                            <p class="text-xs text-slate-400 mt-0.5">Prioritas Utama Keuangan Pekan Ini</p>
-                        </div>
-                        <span class="bg-red-50 text-red-700 text-xs font-bold px-2 py-0.5 rounded">Hari Ini</span>
-                    </div>
-
-                    <div class="flex items-start gap-4 p-3 hover:bg-slate-50 rounded-xl transition-all">
-                        <input type="checkbox" class="mt-1 w-5 h-5 rounded text-teal-600 focus:ring-teal-500 border-slate-300">
-                        <div class="flex-1">
-                            <h4 class="font-semibold text-slate-800 text-sm">Kirim broadcast penawaran "Jasa Terjemah Express Bahasa Arab" ke status WA</h4>
-                            <p class="text-xs text-slate-400 mt-0.5">Gunakan modal alumni LIPIA dengan IPK 3,94 sebagai penarik minat terpercaya</p>
-                        </div>
-                        <span class="bg-amber-50 text-amber-700 text-xs font-bold px-2 py-0.5 rounded">Besok</span>
-                    </div>
-
-                    <div class="flex items-start gap-4 p-3 hover:bg-slate-50 rounded-xl transition-all">
-                        <input type="checkbox" class="mt-1 w-5 h-5 rounded text-teal-600 focus:ring-teal-500 border-slate-300">
-                        <div class="flex-1">
-                            <h4 class="font-semibold text-slate-800 text-sm">Hubungi 5 Mudir Pesantren teratas di Database untuk penawaran Halal Travel B2B</h4>
-                            <p class="text-xs text-slate-400 mt-0.5">Tawarkan program rihlah/studi tiru antar instansi</p>
-                        </div>
-                        <span class="bg-indigo-50 text-indigo-700 text-xs font-bold px-2 py-0.5 rounded">Pekan Ini</span>
-                    </div>
-                </div>
-            </section>
-
-            <section id="page-templates" class="hidden space-y-6">
-                <div>
-                    <h2 class="text-2xl font-bold tracking-tight">Template Teks WhatsApp Otomatis</h2>
-                    <p class="text-sm text-slate-500 mt-1">Satu klik kirim, pesan rapi tanpa perlu mengetik ulang berulang kali.</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-white border border-slate-200 rounded-2xl p-5 space-y-3">
-                        <div class="flex items-center justify-between">
-                            <h4 class="font-bold text-sm text-slate-800"><i class="fa-solid fa-plane text-emerald-600"></i> Template Halal Travel (B2B)</h4>
-                            <span class="text-[10px] bg-emerald-50 text-emerald-700 font-bold px-2 py-0.5 rounded uppercase">Sopan</span>
-                        </div>
-                        <p class="text-xs text-slate-600 bg-slate-50 p-3 rounded-xl leading-relaxed">
-                            "Assalamu’alaikum Wr. Wb. Ustadz [Nama], perkenalkan saya Ifam, alumni LIPIA Jakarta & Humas Pesantren Al-Irsyad Tengaran. Izin menginfokan, saat ini kami mengurasi kuota rihlah/study tour khusus pengurus pesantren untuk program Halal Travel..."
-                        </p>
-                    </div>
-
-                    <div class="bg-white border border-slate-200 rounded-2xl p-5 space-y-3">
-                        <div class="flex items-center justify-between">
-                            <h4 class="font-bold text-sm text-slate-800"><i class="fa-solid fa-graduation-cap text-indigo-600"></i> Template Kuliah di Jordan (KDJ)</h4>
-                            <span class="text-[10px] bg-indigo-50 text-indigo-700 font-bold px-2 py-0.5 rounded uppercase">Edukasi</span>
-                        </div>
-                        <p class="text-xs text-slate-600 bg-slate-50 p-3 rounded-xl leading-relaxed">
-                            "Assalamu’alaikum Wr. Wb. Ustadz/Ustadzah [Nama], terkait rencana kelanjutan studi alumni dan santri kelas akhir ke Yordania (KDJ), berikut kami kirimkan prasyarat lengkap pendaftaran beserta skema program akselerasinya..."
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-        </main>
+        <button onclick="switchPage('templates')" id="aside-templates" class="w-full text-left px-4 py-3 rounded-2xl hover:bg-slate-50 text-slate-600 flex items-center gap-3 transition-all">
+          <i class="fa-solid fa-comment-sms w-5 text-center text-base"></i> Template WA
+        </button>
+      </nav>
     </div>
 
-    <script>
-        // 1. FUNGSI NAVIGASI INSTAN (SPA)
-        function switchPage(pageId) {
-            // Sembunyikan semua section halaman terlebih dahulu
-            document.getElementById('page-dashboard').classList.add('hidden');
-            document.getElementById('page-projects').classList.add('hidden');
-            document.getElementById('page-leads').classList.add('hidden');
-            document.getElementById('page-tasks').classList.add('hidden');
-            document.getElementById('page-templates').classList.add('hidden');
+    <div class="border-t border-slate-100 pt-4 flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full bg-teal-100 text-teal-700 flex items-center justify-center font-bold text-sm">
+        RG
+      </div>
+      <div class="overflow-hidden">
+        <h4 class="font-bold text-sm text-slate-800 truncate">Rifamumza G.</h4>
+        <p class="text-xs text-slate-400 truncate">B2B Marketer</p>
+      </div>
+    </div>
+  </aside>
 
-            // Tampilkan section halaman yang dipilih
-            document.getElementById('page-' + pageId).classList.remove('hidden');
+  <main class="flex-1 p-4 md:p-10 pb-24 md:pb-10 max-w-7xl mx-auto w-full">
 
-            // Atur gaya tombol navigasi yang aktif (active state)
-            document.getElementById('nav-dashboard').classList.remove('active-nav');
-            document.getElementById('nav-projects').classList.remove('active-nav');
-            document.getElementById('nav-leads').classList.remove('active-nav');
-            document.getElementById('nav-tasks').classList.remove('active-nav');
-            document.getElementById('nav-templates').classList.remove('active-nav');
+    <div id="page-dashboard" class="space-y-8 animate-fadeIn">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div>
+          <h2 class="text-3xl font-bold tracking-tight">Assalamu'alaikum, Mas Rifamumza 👋</h2>
+          <p class="text-slate-500 mt-1 text-sm md:text-base">Yuk amankan momentum pekan ini. Tetap semangat, fokus closing!</p>
+        </div>
+        <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 flex items-center gap-3 text-amber-800 max-w-md shadow-sm">
+          <i class="fa-solid fa-circle-exclamation text-xl text-amber-600 shrink-0"></i>
+          <p class="text-xs font-medium leading-relaxed">
+            <strong class="font-bold block">Target Akhir Mei: Rp 10 Juta</strong>
+            Gunakan saringan database pesantren di bawah untuk *fast closing* via WA.
+          </p>
+        </div>
+      </div>
 
-            // Aktifkan gaya pada tombol yang baru diklik
-            document.getElementById('nav-' + pageId).classList.add('active-nav');
-        }
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm hover:shadow-md transition-all">
+          <span class="text-xs text-slate-400 font-bold uppercase tracking-wider block">Total Mitra</span>
+          <h3 class="text-2xl md:text-3xl font-extrabold mt-1">56</h3>
+          <p class="text-xs text-teal-600 font-medium mt-1.5"><i class="fa-solid fa-school mr-1"></i> Sekolah Terdata</p>
+        </div>
 
-        // 2. FUNGSI OTOMATISASI TEKS WHATSAPP (DYNAMIC GENERATOR)
-        function sendWA(name, context) {
-            let message = "";
-            // Menentukan teks template otomatis berdasarkan context tipe produk
-            if(context === 'travel') {
-                message = `Assalamu’alaikum Wr. Wb. Ustadz ${name}, perkenalkan saya Ifam, alumni LIPIA & Humas Pesantren Al-Irsyad Tengaran. Izin menginfokan, saat ini kami mengurasi kuota khusus program Rihlah/Study Tour Kelembagaan B2B khusus untuk jajaran pengurus institusi mitra. Bila Ustadz ada kelonggaran waktu, mohon izin saya telepon 5 menit nggih ustadz? Jazakallahu khairan.`;
-            } else if (context === 'jordan') {
-                message = `Assalamu’alaikum Wr. Wb. ${name}, izin follow up kembali terkait program Kuliah Di Jordan (KDJ) untuk akselerasi kelanjutan studi santri dan alumni ke Timur Tengah yang kemarin sempat dibahas 😊`;
-            } else if (context === 'terjemah') {
-                message = `Assalamu’alaikum Wr. Wb. Ustadz ${name}, ini Ifam penerjemah berkas bahasa Arab. Dokumen kelengkapan institusi kemarin sudah siap diproses secara kilat (Express 24 Jam). Mohon izin konfirmasinya agar bisa langsung masuk antrean pusat hari ini, syukron ustadz.`;
-            }
+        <div class="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm hover:shadow-md transition-all">
+          <span class="text-xs text-slate-400 font-bold uppercase tracking-wider block">Leads Hot 🔥</span>
+          <h3 class="text-2xl md:text-3xl font-extrabold text-amber-600 mt-1">12</h3>
+          <p class="text-xs text-slate-400 mt-1.5">Sangat berminat / butuh DP</p>
+        </div>
 
-            // Membuka tab/aplikasi WhatsApp baru dengan menyertakan template pesan terenkripsi aman
-            const url = `https://wa.me/6285175132050?text=${encodeURIComponent(message)}`;
-            window.open(url, '_blank');
-        }
-    </script>
+        <div class="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm hover:shadow-md transition-all">
+          <span class="text-xs text-slate-400 font-bold uppercase tracking-wider block">Target Omset</span>
+          <h3 class="text-2xl md:text-3xl font-extrabold text-teal-700 mt-1">Rp 10 M</h3>
+          <p class="text-xs text-slate-400 mt-1.5">Pekan ini wajib tembus</p>
+        </div>
+
+        <div class="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm hover:shadow-md transition-all">
+          <span class="text-xs text-slate-400 font-bold uppercase tracking-wider block">Follow Up Hari Ini</span>
+          <h3 class="text-2xl md:text-3xl font-extrabold mt-1">8</h3>
+          <p class="text-xs text-emerald-600 font-medium mt-1.5"><i class="fa-solid fa-circle-check mr-1"></i> Siap disapa cepat</p>
+        </div>
+      </div>
+
+      <div class="bg-gradient-to-br from-teal-800 to-teal-950 rounded-3xl p-6 md:p-8 text-white shadow-xl shadow-teal-950/10 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
+        <div class="space-y-2">
+          <span class="bg-teal-700/60 text-teal-100 text-[10px] font-bold tracking-widest px-3 py-1 rounded-full uppercase border border-teal-600/30">Taktik Darurat</span>
+          <h3 class="text-xl md:text-2xl font-bold tracking-tight">Kirim Penawaran Rihlah & KDJ ke Pembuat Keputusan</h3>
+          <p class="text-teal-100/80 text-xs md:text-sm max-w-2xl leading-relaxed">
+            Gunakan status kelulusan LIPIA dengan IPK tinggi (3,94) dan posisi Kehumasan Pesantren Mas sebagai modal kepercayaan instansi untuk mempermudah birokrasi penawaran B2B.
+          </p>
+        </div>
+        <button onclick="switchPage('leads')" class="bg-white text-teal-900 hover:bg-teal-50 px-6 py-3.5 rounded-2xl text-sm font-bold shadow-lg transition-all shrink-0 w-full lg:w-auto active:scale-95 flex items-center justify-center gap-2">
+          Mulai Follow Up Sekarang <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+
+      <div class="space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-bold text-slate-800">Ringkasan Project Aktif</h3>
+          <button onclick="switchPage('projects')" class="text-teal-600 font-semibold text-sm hover:underline">
+            Lihat Semua <i class="fa-solid fa-angle-right ml-1"></i>
+          </button>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm">
+            <div class="flex items-center justify-between">
+              <h4 class="font-bold text-base text-slate-800">Kuliah Di Jordan (KDJ)</h4>
+              <span class="text-xs bg-slate-50 px-2.5 py-1 rounded-lg font-medium text-slate-500">43 Leads</span>
+            </div>
+            <div class="mt-4">
+              <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                <div class="h-full bg-teal-500 rounded-full" style="width:72%"></div>
+              </div>
+              <p class="text-xs text-slate-400 mt-2 font-medium">72% Progress Rekrutmen</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm">
+            <div class="flex items-center justify-between">
+              <h4 class="font-bold text-base text-slate-800">Halal Travel & Tour B2B</h4>
+              <span class="text-xs bg-slate-50 px-2.5 py-1 rounded-lg font-medium text-slate-500">18 Leads</span>
+            </div>
+            <div class="mt-4">
+              <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                <div class="h-full bg-teal-500 rounded-full" style="width:35%"></div>
+              </div>
+              <p class="text-xs text-slate-400 mt-2 font-medium">35% Progress Penawaran Instansi</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm">
+            <div class="flex items-center justify-between">
+              <h4 class="font-bold text-base text-slate-800">Terjemahan Dokumen Kilat</h4>
+              <span class="text-xs bg-slate-50 px-2.5 py-1 rounded-lg font-medium text-slate-500">9 Berkas</span>
+            </div>
+            <div class="mt-4">
+              <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                <div class="h-full bg-amber-500 rounded-full" style="width:90%"></div>
+              </div>
+              <p class="text-xs text-slate-400 mt-2 font-medium">90% Selesai Minggu Ini</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="page-projects" class="hidden space-y-6 animate-fadeIn">
+      <div>
+        <h2 class="text-3xl font-bold tracking-tight">Kategori Project & Skema Komisi</h2>
+        <p class="text-slate-500 mt-1 text-sm">3 Keran pendapatan utama yang dapat Mas optimalkan tanpa modal portofolio keahlian khusus.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm flex flex-col justify-between hover:border-teal-100 transition-all">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl font-bold mb-4">
+              <i class="fa-solid fa-plane-departure"></i>
+            </div>
+            <h3 class="font-bold text-lg text-slate-800">Halal Travel (B2B Marketer)</h3>
+            <p class="text-xs text-slate-500 mt-2 leading-relaxed">Target utama: Rihlah kerja kepengurusan pondok pesantren, studi banding/studi tiru antar instansi, atau umrah rombongan pengajar.</p>
+            <div class="mt-4 bg-emerald-50 text-emerald-800 text-xs font-bold px-3 py-2 rounded-xl inline-block border border-emerald-100">
+              Fee Kontan: Rp 500.000 - Rp 1.000.000 / Orang
+            </div>
+          </div>
+          <button onclick="switchPage('leads')" class="mt-6 w-full py-3 text-center border border-slate-200 text-slate-700 font-semibold text-xs rounded-xl hover:bg-slate-50 transition-all active:scale-[0.98]">
+            Buka Database Sekolah & Sapa PIC
+          </button>
+        </div>
+
+        <div class="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm flex flex-col justify-between hover:border-teal-100 transition-all">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl font-bold mb-4">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <h3 class="font-bold text-lg text-slate-800">Kuliah Di Jordan (KDJ)</h3>
+            <p class="text-xs text-slate-500 mt-2 leading-relaxed">Target utama: Santri kelas akhir (Aliyah/SMA) atau alumni fresh graduate pondok pesantren yang ingin studi ke Yordania.</p>
+            <div class="mt-4 bg-indigo-50 text-indigo-800 text-xs font-bold px-3 py-2 rounded-xl inline-block border border-indigo-100">
+              Fee Kontan: Rp 500.000 / Anak (DP Closing Awal: Rp 200.000)
+            </div>
+          </div>
+          <button onclick="switchPage('leads')" class="mt-6 w-full py-3 text-center border border-slate-200 text-slate-700 font-semibold text-xs rounded-xl hover:bg-slate-50 transition-all active:scale-[0.98]">
+            Saring Calon Mahasiswa Potensial
+          </button>
+        </div>
+
+        <div class="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm flex flex-col justify-between hover:border-teal-100 transition-all">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-teal-50 text-teal-600 flex items-center justify-center text-xl font-bold mb-4">
+              <i class="fa-solid fa-language"></i>
+            </div>
+            <h3 class="font-bold text-lg text-slate-800">Penerjemah Berkas Bahasa Arab</h3>
+            <p class="text-xs text-slate-500 mt-2 leading-relaxed">Target utama: Santri pendaftar beasiswa Timur Tengah swasta atau umum yang memerlukan berkas kilat terjemahan amanah.</p>
+            <div class="mt-4 bg-teal-50 text-teal-800 text-xs font-bold px-3 py-2 rounded-xl inline-block border border-teal-100">
+              Margin Bersih: Rp 100.000 - Rp 150.000 / Halaman Express
+            </div>
+          </div>
+          <button onclick="switchPage('leads')" class="mt-6 w-full py-3 text-center border border-slate-200 text-slate-700 font-semibold text-xs rounded-xl hover:bg-slate-50 transition-all active:scale-[0.98]">
+            Sebarkan Info ke Status WA / Kontak
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="page-leads" class="hidden space-y-6 animate-fadeIn">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-3xl font-bold tracking-tight">Database & Kontak Prioritas (Terkurasi)</h2>
+          <p class="text-slate-500 mt-1 text-sm">Hasil saringan data instansi yang memiliki pengambil keputusan (*decision maker*) langsung untuk eksekusi kilat.</p>
+        </div>
+        <div class="bg-white border border-slate-200 px-4 py-2 rounded-2xl text-xs font-semibold text-slate-500 shadow-sm flex items-center gap-2">
+          <i class="fa-solid fa-filter text-teal-600"></i> Mode: Prioritas Pengambil Keputusan
+        </div>
+      </div>
+
+      <div class="bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-sm">
+        <div class="p-5 border-b border-slate-100 bg-slate-50/50 flex items-center justify-between">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Daftar Kontak Pesantren Mitra</span>
+          <span class="text-xs text-slate-500 font-medium">Menampilkan 5 Data Teratas</span>
+        </div>
+        
+        <div class="divide-y divide-slate-100">
+          
+          <div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-50/80 transition-all">
+            <div class="space-y-1">
+              <div class="flex items-center gap-2 flex-wrap">
+                <h4 class="font-bold text-base text-slate-800">Kafila International Islamic School</h4>
+                <span class="bg-red-50 text-red-700 border border-red-100 text-[10px] font-bold px-2 py-0.5 rounded-md">HOT 🔥</span>
+              </div>
+              <p class="text-xs text-slate-500 font-medium">Ust. Mardi (BK) • <span class="text-slate-400 font-mono">081266120051</span></p>
+              <div class="text-xs text-teal-700 font-semibold bg-teal-50/60 border border-teal-100/50 px-2 py-0.5 rounded inline-block">
+                Kategori Prospek: Kuliah di Jordan (KDJ)
+              </div>
+            </div>
+            <button onclick="sendWA('Ust. Mardi', 'jordan', '6281266120051')" class="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold px-5 py-3 rounded-2xl flex items-center justify-center gap-2 shadow-md shadow-emerald-500/10 active:scale-95 transition-all">
+              <i class="fa-brands fa-whatsapp text-base"></i> Sapa WA Otomatis
+            </button>
+          </div>
+
+          <div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-50/80 transition-all">
+            <div class="space-y-1">
+              <div class="flex items-center gap-2 flex-wrap">
+                <h4 class="font-bold text-base text-slate-800">Ibnu Hajar Boarding School (IHBS)</h4>
+                <span class="bg-red-50 text-red-700 border border-red-100 text-[10px] font-bold px-2 py-0.5 rounded-md">HOT 🔥</span>
+              </div>
+              <p class="text-xs text-slate-500 font-medium">Ustadz Salman Fariz • <span class="text-slate-400 font-mono">081281774609</span></p>
+              <div class="text-xs text-teal-700 font-semibold bg-teal-50/60 border border-teal-100/50 px-2 py-0.5 rounded inline-block">
+                Kategori Prospek: Halal Travel & Study Tour B2B
+              </div>
+            </div>
+            <button onclick="sendWA('Ustadz Salman Fariz', 'travel', '6281281774609')" class="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold px-5 py-3 rounded-2xl flex items-center justify-center gap-2 shadow-md shadow-emerald-500/10 active:scale-95 transition-all">
+              <i class="fa-brands fa-whatsapp text-base"></i> Sapa WA Otomatis
+            </button>
+          </div>
+
+          <div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-50/80 transition-all">
+            <div class="space-y-1">
+              <div class="flex items-center gap-2 flex-wrap">
+                <h4 class="font-bold text-base text-slate-800">Ponpes Darunnajah Jakarta</h4>
+                <span class="bg-amber-50 text-amber-700 border border-amber-100 text-[10px] font-bold px-2 py-0.5 rounded-md">WARM ☀️</span>
+              </div>
+              <p class="text-xs text-slate-500 font-medium">Bagian Sekretariat Utama • <span class="text-slate-400 font-mono">081311152800</span></p>
+              <div class="text-xs text-teal-700 font-semibold bg-teal-50/60 border border-teal-100/50 px-2 py-0.5 rounded inline-block">
+                Kategori Prospek: Halal Travel / Rihlah Kerja
+              </div>
+            </div>
+            <button onclick="sendWA('Asatidzah di Darunnajah', 'travel', '6281311152800')" class="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold px-5 py-3 rounded-2xl flex items-center justify-center gap-2 shadow-md shadow-emerald-500/10 active:scale-95 transition-all">
+              <i class="fa-brands fa-whatsapp text-base"></i> Sapa WA Otomatis
+            </button>
+          </div>
+
+          <div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-50/80 transition-all">
+            <div class="space-y-1">
+              <div class="flex items-center gap-2 flex-wrap">
+                <h4 class="font-bold text-base text-slate-800">Ponpes Luhur Ats Tsaqofah</h4>
+                <span class="bg-amber-50 text-amber-700 border border-amber-100 text-[10px] font-bold px-2 py-0.5 rounded-md">WARM ☀️</span>
+              </div>
+              <p class="text-xs text-slate-500 font-medium">Kontak Kelembagaan • <span class="text-slate-400 font-mono">08111117595</span></p>
+              <div class="text-xs text-teal-700 font-semibold bg-teal-50/60 border border-teal-100/50 px-2 py-0.5 rounded inline-block">
+                Kategori Prospek: Terjemahan Berkas Institusi Kilat
+              </div>
+            </div>
+            <button onclick="sendWA('Ustadz/Ustadzah di Ats Tsaqofah', 'terjemah', '628111117595')" class="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold px-5 py-3 rounded-2xl flex items-center justify-center gap-2 shadow-md shadow-emerald-500/10 active:scale-95 transition-all">
+              <i class="fa-brands fa-whatsapp text-base"></i> Sapa WA Otomatis
+            </button>
+          </div>
+
+          <div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-50/80 transition-all">
+            <div class="space-y-1">
+              <div class="flex items-center gap-2 flex-wrap">
+                <h4 class="font-bold text-base text-slate-800">SMAIT Rahmaniyyah Depok</h4>
+                <span class="bg-red-50 text-red-700 border border-red-100 text-[10px] font-bold px-2 py-0.5 rounded-md">HOT 🔥</span>
+              </div>
+              <p class="text-xs text-slate-500 font-medium">Pak Deni Kepsek • <span class="text-slate-400 font-mono">08128066200</span></p>
+              <div class="text-xs text-teal-700 font-semibold bg-teal-50/60 border border-teal-100/50 px-2 py-0.5 rounded inline-block">
+                Kategori Prospek: Kuliah di Jordan / EduTrip
+              </div>
+            </div>
+            <button onclick="sendWA('Pak Deni', 'jordan', '628128066200')" class="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold px-5 py-3 rounded-2xl flex items-center justify-center gap-2 shadow-md shadow-emerald-500/10 active:scale-95 transition-all">
+              <i class="fa-brands fa-whatsapp text-base"></i> Sapa WA Otomatis
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div id="page-tasks" class="hidden space-y-6 animate-fadeIn">
+      <div>
+        <h2 class="text-3xl font-bold tracking-tight">Rencana Aksi & Fokus Harian</h2>
+        <p class="text-slate-500 mt-1 text-sm">Jangan biarkan pikiran terlalu stres atau kewalahan. Cukup selesaikan target harian satu demi satu di sini.</p>
+      </div>
+
+      <div class="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm space-y-4">
+        
+        <div class="flex items-start gap-4 p-3 hover:bg-slate-50 rounded-2xl transition-all border border-slate-50">
+          <input type="checkbox" id="task1" class="mt-1 w-5 h-5 rounded-lg text-teal-600 focus:ring-teal-500 border-slate-300 cursor-pointer">
+          <label for="task1" class="flex-1 cursor-pointer">
+            <h4 class="font-bold text-slate-800 text-sm md:text-base">Gaji Pesantren Cair Terdekat</h4>
+            <p class="text-xs text-slate-400 mt-0.5">Amankan Rp 2.200.000 potong langsung di awal untuk alokasi cicilan pelunasan utang.</p>
+          </label>
+          <span class="bg-red-50 text-red-700 border border-red-100 text-[10px] font-bold px-2 py-1 rounded-md shrink-0">HARI INI</span>
+        </div>
+
+        <div class="flex items-start gap-4 p-3 hover:bg-slate-50 rounded-2xl transition-all border border-slate-50">
+          <input type="checkbox" id="task2" class="mt-1 w-5 h-5 rounded-lg text-teal-600 focus:ring-teal-500 border-slate-300 cursor-pointer">
+          <label for="task2" class="flex-1 cursor-pointer">
+            <h4 class="font-bold text-slate-800 text-sm md:text-base">Naikkan Iklan "Jasa Terjemah Kilat Bahasa Arab" di Status WA & IG</h4>
+            <p class="text-xs text-slate-400 mt-0.5">Buat infografis sederhana yang mencantumkan lulusan Syariah LIPIA IPK 3.94 untuk social proof kuat.</p>
+          </label>
+          <span class="bg-amber-50 text-amber-700 border border-amber-100 text-[10px] font-bold px-2 py-1 rounded-md shrink-0">BESOK</span>
+        </div>
+
+        <div class="flex items-start gap-4 p-3 hover:bg-slate-50 rounded-2xl transition-all border border-slate-50">
+          <input type="checkbox" id="task3" class="mt-1 w-5 h-5 rounded-lg text-teal-600 focus:ring-teal-500 border-slate-300 cursor-pointer">
+          <label for="task3" class="flex-1 cursor-pointer">
+            <h4 class="font-bold text-slate-800 text-sm md:text-base">Sapa 5 Kontak Hot Utama di Menu Leads</h4>
+            <p class="text-xs text-slate-400 mt-0.5">Lakukan follow up sopan menggunakan fitur tombol kirim pesan instan otomatis.</p>
+          </label>
+          <span class="bg-indigo-50 text-indigo-700 border border-indigo-100 text-[10px] font-bold px-2 py-1 rounded-md shrink-0">PEKAN INI</span>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div id="page-templates" class="hidden space-y-6 animate-fadeIn">
+      <div>
+        <h2 class="text-3xl font-bold tracking-tight">Koleksi Template Teks WhatsApp</h2>
+        <p class="text-slate-500 mt-1 text-sm">Pesan otomatis yang rapi dan telah disesuaikan agar tidak terkesan kaku atau sekadar *hard selling*.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <div class="bg-white border border-slate-100 rounded-3xl p-6 space-y-3 shadow-sm">
+          <div class="flex items-center justify-between">
+            <h4 class="font-bold text-sm text-slate-800"><i class="fa-solid fa-plane text-emerald-600 mr-1"></i> Template Halal Travel B2B</h4>
+            <span class="text-[9px] bg-emerald-50 text-emerald-700 font-bold px-2 py-0.5 rounded uppercase border border-emerald-100">Sopan & Institusi</span>
+          </div>
+          <div class="bg-slate-50 p-4 rounded-2xl text-xs text-slate-600 leading-relaxed font-mono select-all">
+            Assalamu’alaikum Wr. Wb. Ustadz [Nama], perkenalkan saya Ifam, alumni LIPIA & saat ini bertugas di Kehumasan Pesantren Al-Irsyad Tengaran. Izin menginfokan, saat ini kami sedang mengurasi kuota rihlah/study tour khusus pengurus untuk program B2B Halal Travel. Bila Ustadz ada waktu luang, mohon izin saya telepon 5 menit nggih ustadz? Syukron, jazakallahu khairan.
+          </div>
+        </div>
+
+        <div class="bg-white border border-slate-100 rounded-3xl p-6 space-y-3 shadow-sm">
+          <div class="flex items-center justify-between">
+            <h4 class="font-bold text-sm text-slate-800"><i class="fa-solid fa-graduation-cap text-indigo-600 mr-1"></i> Template Kuliah di Jordan (KDJ)</h4>
+            <span class="text-[9px] bg-indigo-50 text-indigo-700 font-bold px-2 py-0.5 rounded uppercase border border-indigo-100">Edukasi & Alumni</span>
+          </div>
+          <div class="bg-slate-50 p-4 rounded-2xl text-xs text-slate-600 leading-relaxed font-mono select-all">
+            Assalamu’alaikum Wr. Wb. Ustadz/Ustadzah [Nama], terkait rencana kelanjutan studi alumni dan kelas akhir santri ke Yordania melalui program KDJ, berikut kami kirimkan prasyarat resmi pendaftaran beserta skema program akselerasinya nggih ustadz/ustadzah. Hubungi saya jika ada berkas santri yang ingin langsung dibantu proses kelengkapannya.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <nav class="md:hidden bg-white border-t border-slate-200 fixed bottom-0 left-0 right-0 h-16 flex justify-around items-center px-2 z-30 shadow-lg">
+    <button onclick="switchPage('dashboard')" id="mobile-dashboard" class="flex flex-col items-center justify-center text-slate-400 hover:text-teal-600 w-12 py-1 nav-mobile-active">
+      <i class="fa-solid fa-chart-pie text-lg"></i>
+      <span class="text-[9px] mt-0.5 font-medium">Home</span>
+    </button>
+    <button onclick="switchPage('projects')" id="mobile-projects" class="flex flex-col items-center justify-center text-slate-400 hover:text-teal-600 w-12 py-1">
+      <i class="fa-solid fa-folder text-lg"></i>
+      <span class="text-[9px] mt-0.5 font-medium">Projects</span>
+    </button>
+    <button onclick="switchPage('leads')" id="mobile-leads" class="flex flex-col items-center justify-center text-slate-400 hover:text-teal-600 w-12 py-1">
+      <i class="fa-solid fa-user-group text-lg"></i>
+      <span class="text-[9px] mt-0.5 font-medium">Leads</span>
+    </button>
+    <button onclick="switchPage('tasks')" id="mobile-tasks" class="flex flex-col items-center justify-center text-slate-400 hover:text-teal-600 w-12 py-1">
+      <i class="fa-solid fa-list-check text-lg"></i>
+      <span class="text-[9px] mt-0.5 font-medium">Tasks</span>
+    </button>
+    <button onclick="switchPage('templates')" id="mobile-templates" class="flex flex-col items-center justify-center text-slate-400 hover:text-teal-600 w-12 py-1">
+      <i class="fa-solid fa-comment-sms text-lg"></i>
+      <span class="text-[9px] mt-0.5 font-medium">Msg</span>
+    </button>
+  </nav>
+
+</div>
+
+<script>
+  // 1. LOGIC PINDAH HALAMAN SECARA INSTAN (SPA ROUTER)
+  function switchPage(pageId) {
+    // Kumpulkan seluruh ID seksi halaman
+    const pages = ['dashboard', 'projects', 'leads', 'tasks', 'templates'];
+    
+    // Sembunyikan semua halaman dengan menambahkan class 'hidden'
+    pages.forEach(p => {
+      document.getElementById('page-' + p).classList.add('hidden');
+    });
+    
+    // Tampilkan hanya halaman yang diinginkan
+    document.getElementById('page-' + pageId).classList.remove('hidden');
+
+    // Reset status aktif menu navigasi desktop & mobile
+    pages.forEach(p => {
+      // Navigasi Desktop
+      const asideBtn = document.getElementById('aside-' + p);
+      if(asideBtn) asideBtn.classList.remove('nav-active');
+      
+      // Navigasi Mobile
+      const mobileBtn = document.getElementById('mobile-' + p);
+      if(mobileBtn) mobileBtn.classList.remove('nav-mobile-active');
+    });
+
+    // Pasang status aktif ke tombol menu yang diklik saat ini
+    const activeAside = document.getElementById('aside-' + pageId);
+    if(activeAside) activeAside.classList.add('nav-active');
+
+    const activeMobile = document.getElementById('mobile-' + pageId);
+    if(activeMobile) activeMobile.classList.add('nav-mobile-active');
+
+    // Scroll otomatis ke atas layar setiap ganti halaman (sangat krusial untuk UX mobile)
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // 2. OTOMATISASI HIT WHATSAPP DENGAN STRATEGI TEMPLATE KONTEKSTUAL
+  function sendWA(name, context, phoneNumber) {
+    let message = "";
+    
+    // Logika pemilihan draf teks otomatis agar tidak perlu ngetik ulang berulang kali
+    if(context === 'travel') {
+      message = `Assalamu’alaikum Wr. Wb. Ustadz ${name}, perkenalkan saya Ifam, alumni LIPIA & saat ini bertugas di Kehumasan Pesantren Al-Irsyad Tengaran. Izin menginfokan, saat ini kami sedang mengurasi kuota rihlah/study tour khusus pengurus untuk program B2B Halal Travel. Bila Ustadz ada waktu luang, mohon izin saya telepon 5 menit nggih ustadz? Syukron, jazakallahu khairan.`;
+    } else if (context === 'jordan') {
+      message = `Assalamu’alaikum Wr. Wb. ${name}, izin follow up kembali terkait program Kuliah Di Jordan (KDJ) untuk akselerasi kelanjutan studi santri dan alumni ke Timur Tengah yang kemarin sempat dibahas nggih ustadz/ustadzah nggih 😊`;
+    } else if (context === 'terjemah') {
+      message = `Assalamu’alaikum Wr. Wb. Ustadz ${name}, ini Ifam penerjemah berkas bahasa Arab. Dokumen institusi/santri kemarin sudah siap diproses secara kilat (Express 24 Jam) agar tidak tertinggal kloter pendaftaran pusat. Mohon izin konfirmasinya nggih ustadz, syukron.`;
+    }
+
+    // Mengamankan enkripsi url agar simbol spasi dan karakter unik terbaca sempurna di sistem WA
+    const finalUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    
+    // Membuka tab WhatsApp baru secara bersih aman
+    window.open(finalUrl, '_blank');
+  }
+</script>
+
 </body>
 </html>
