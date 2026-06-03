@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JagoFolup Leads MVP</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50">
+<div class="max-w-6xl mx-auto p-6">
+<h1 class="text-3xl font-bold text-teal-600 mb-2">JagoFolup</h1>
+<p class="text-slate-500 mb-6">Leads Management MVP</p>
+
+<button onclick="openModal()" class="bg-teal-600 text-white px-4 py-3 rounded-xl mb-6">+ Tambah Lead</button>
+
+<div id="leadList" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+</div>
+
+<div id="modal" class="hidden fixed inset-0 bg-black/40 flex items-center justify-center p-4">
+<div class="bg-white p-5 rounded-2xl w-full max-w-md">
+<h2 class="font-bold mb-4">Tambah Lead</h2>
+<input id="name" class="w-full border p-2 mb-2" placeholder="Nama">
+<input id="phone" class="w-full border p-2 mb-2" placeholder="No WA">
+<input id="school" class="w-full border p-2 mb-2" placeholder="Sekolah">
+<input id="project" class="w-full border p-2 mb-2" placeholder="Project">
+<select id="status" class="w-full border p-2 mb-2">
+<option>New</option>
+<option>Contacted</option>
+<option>Follow Up</option>
+<option>Hot</option>
+<option>Closing</option>
+<option>Lost</option>
+</select>
+<textarea id="note" class="w-full border p-2 mb-4" placeholder="Catatan"></textarea>
+<button onclick="saveLead()" class="bg-teal-600 text-white px-4 py-2 rounded">Simpan</button>
+<button onclick="closeModal()" class="ml-2 bg-slate-200 px-4 py-2 rounded">Batal</button>
+</div>
+</div>
+
+<script>
+let leads = JSON.parse(localStorage.getItem('jagofolup_leads') || '[]');
+
+function openModal(){document.getElementById('modal').classList.remove('hidden')}
+function closeModal(){document.getElementById('modal').classList.add('hidden')}
+
+function saveLead(){
+ const lead={
+  id:Date.now(),
+  name:name.value,
+  phone:phone.value,
+  school:school.value,
+  project:project.value,
+  status:status.value,
+  note:note.value
+ };
+ leads.push(lead);
+ localStorage.setItem('jagofolup_leads',JSON.stringify(leads));
+ closeModal();
+ render();
+}
+
+function wa(id){
+ const lead=leads.find(x=>x.id===id);
+ const msg=`Assalamu'alaikum ${lead.name}, izin follow up terkait program ${lead.project} 😊`;
+ window.open(`https://wa.me/${lead.phone}?text=${encodeURIComponent(msg)}`,'_blank');
+}
+
+function delLead(id){
+ leads=leads.filter(x=>x.id!==id);
+ localStorage.setItem('jagofolup_leads',JSON.stringify(leads));
+ render();
+}
+
+function render(){
+ document.getElementById('leadList').innerHTML=leads.map(l=>`
+ <div class="bg-white border rounded-2xl p-4">
+ <h3 class="font-bold">${l.name}</h3>
+ <p>${l.school}</p>
+ <p class="text-slate-500">${l.project}</p>
+ <p class="mt-2">${l.status}</p>
+ <div class="flex gap-2 mt-4">
+ <button onclick="wa(${l.id})" class="bg-teal-600 text-white px-3 py-2 rounded">WhatsApp</button>
+ <button onclick="delLead(${l.id})" class="bg-red-100 text-red-700 px-3 py-2 rounded">Delete</button>
+ </div>
+ </div>`).join('');
+}
+render();
+</script>
+</body>
+</html>
